@@ -3,6 +3,7 @@ import { Providers } from "./providers";
 import { cx } from "@/utils/all";
 import { Inter, Lora } from "next/font/google";
 import Script from 'next/script';
+import GaTag from "./ga";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,16 +25,7 @@ export default function RootLayout({
       lang="ja"
       suppressHydrationWarning
       className={cx(inter.variable, lora.variable)}>
-      <Script src="https://www.googletagmanager.com/gtag/js?id=UA-44444834-1" />
-      <Script id="google-analytics">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'UA-44444834-1');
-        `}
-      </Script>
+      <GaTag />
       <body className="antialiased text-gray-800 dark:bg-black dark:text-gray-400">
         <Providers>{children}</Providers>
       </body>
